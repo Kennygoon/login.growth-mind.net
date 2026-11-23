@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>그로스마인드 근무관리</title>
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#0B3F35">
+<link rel="icon" type="image/png" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="근무관리">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<style>
+  html, body { margin: 0; height: 100%; background: #FBFDFC; }
+  iframe { border: 0; width: 100%; height: 100vh; height: 100dvh; display: block; }
+</style>
+</head>
+<body>
+<iframe id="app" title="그로스마인드 근무관리" allow="camera *; clipboard-write *"></iframe>
+<noscript>이 화면을 보려면 자바스크립트를 켜 주세요.</noscript>
+<script>
+  // 앱(Apps Script) 배포 주소. 새 배포로 주소가 바뀌면 이 한 줄만 고칩니다.
+  var APP_URL = 'https://script.google.com/macros/s/AKfycbyvixnhARW4tjEJd-TLvcpqgmPWGV1xCUnFoZ-Fh8O-dNB9r3eqX-ZJ1TAvXw6WDSF_XQ/exec';
+  // 서명 링크의 ?sign=... 같은 값을 앱으로 그대로 넘깁니다.
+  document.getElementById('app').src = APP_URL + (location.search || '');
+  if ('serviceWorker' in navigator) { navigator.serviceWorker.register('sw.js').catch(function () {}); }
+</script>
+</body>
+</html>
