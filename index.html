@@ -189,7 +189,7 @@ function changePassword(oldPw,newPw){
 /* ---------- 공통 틀 ---------- */
 function navFor(){
   if(ME.role==='ARTIST')return [['home','홈'],['hist','기록'],['leave','연차'],['notice','공지'],['me','내 정보']];
-  if(ME.role==='COMPANY'){var n=[['dash','대시보드'],['att','출퇴근'],['tasks','업무제출'],['leave','연차'],['notice','공지']];var p=ME.perms||{};if(p.task_create)n.push(['newtask','업무등록']);if(p.attendance_edit)n.push(['edit','시간수정']);if(p.sign_link!==false)n.push(['sign','서명']);if(p.esg_view)n.push(['esg','ESG실적']);n.push(['pw','계정']);return n}
+  if(ME.role==='COMPANY'){var n=[['dash','대시보드'],['att','출퇴근'],['tasks','업무제출'],['leave','연차'],['notice','공지']];var p=ME.perms||{};if(p.task_create)n.push(['newtask','업무등록']);if(p.sign_link!==false)n.push(['sign','서명']);if(p.esg_view)n.push(['esg','ESG실적']);n.push(['pw','계정']);return n}
   return [['gm','전체현황'],['co','회사화면'],['mgr','회사정보'],['art','예술인'],['bc','공지'],['esg','ESG'],['set','설정']]}
 function shell(){var nav=navFor();if(!VIEW||!nav.some(function(n){return n[0]===VIEW}))VIEW=nav[0][0];
   $('app').innerHTML='<header class="top"><div class="l"><b id="ttl" style="color:#fff">'+(ME.role==='COMPANY'?E((ME.company||{}).name||''):ME.role==='GM'?'전체 관리자':'')+'</b> '+E(ME.name)+'</div>'+logoImg(34)+'<div class="r"><button onclick="logout()">로그아웃</button></div></header><main id="main"></main><nav class="nav" id="nav">'+nav.map(function(n){return '<button data-v="'+n[0]+'" onclick="setView(\''+n[0]+'\')">'+n[1]+'<span class="dot" id="dot_'+n[0]+'" style="display:none"></span></button>'}).join('')+'</nav>';
